@@ -1,14 +1,14 @@
 
 <!doctype html>
 <html lang="en">
+{% load staticfiles %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="../../../../favicon.ico">
 
-  <title>Album example for Bootstrap</title>
+  <title>Sweeton Fernandes</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -19,15 +19,17 @@
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
-      <a class="navbar-brand" href="">Sweeton Fernandes</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Sweeton Fernandes</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="#">Twitter</a>
-          <a class="nav-item nav-link" href="#">Resume</a>
-          <a class="nav-item nav-link" href="#">Blog</a>
+          <a class="nav-item nav-link" href="https://www.linkedin.com/in/sweeton-nikil-fernandes-5341a315b/">LinkedIn</a>
+          <a class="nav-item nav-link" href="https://github.com/SNFernandes24">GitHub</a>
+          <a class="nav-item nav-link" href="https://twitter.com/NikilFernandes1">Twitter</a>
+          <a class="nav-item nav-link" href="{% static 'Resume.pdf' %}">Resume</a>
+          <a class="nav-item nav-link" href="{%url 'allblogs'%}">Blog</a>
         </div>
       </div>
     </nav>
@@ -42,6 +44,7 @@
         <p>
           <a href="mailto:fernandes2495@hotmail.co.uk" class="btn btn-primary my-2">Email Me</a>
         </p>
+        <img src = "{% static 'sweeton.jpg' %}"/img>
       </div>
     </section>
 
@@ -54,6 +57,7 @@
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
               <img class="card-img-top" src = "{{ job.image.url}}">
+              <hr />
               <div class="card-body">
                 <p class="card-text">{{job.summary}}</p>
               </div>
