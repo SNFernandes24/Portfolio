@@ -40,13 +40,35 @@
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Hi, I'm Sweeton...</h1>
-        <p class="lead text-muted">I work with Unreal, C++, C# and very recently started getting into Python.
-
-I have developed games in both Unreal and Unity for PC and mobile with Unreal. Currently looking to start in Software Development and focus more on that.</p>
-        <p>
-          <a href="mailto:fernandes2495@hotmail.co.uk" class="btn btn-primary my-2">Email Me</a>
-        </p>
+        <p class="lead text-muted">I work with Unreal, C++, C# and have experience developing in Python/Django, Javascript, HTML5, CSS, Bootstrap.
+          I have developed games in both Unreal and Unity for PC and mobile with Unreal. Currently looking to start in Software Development and focus more on that.</p>
         <img src = "{% static 'sweeton.jpg' %}"/img>
+        <h2>Contact Me</h2>
+        <p> Please send your message below. I will get back to you at the earliest! </p>
+        <form role="form" method="POST" id="reused_form" action="{% url 'send' %}">
+          {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="message"> Message:</label>
+                    <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="name"> Your Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="email"> Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button type="submit" class="btn btn-lg btn-default pull-right" value="submit">Send &rarr;</button>
+                </div>
+            </div>
+        </form>
       </div>
     </section>
 

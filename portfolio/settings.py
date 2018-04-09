@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from myconfig import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,13 +21,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tcjd!8v+^)ql+)p+i0l1z45+&xhg$kalb6c=10u-32q!b#%btg'
+SECRET_KEY = configSECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SEND_GRID_AP_KEY = configSEND_GRID_API
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = configEMAIL_USER
+EMAIL_HOST_PASSWORD = configEMAIL_PASSWORD
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = configDEFAULT_EMAIL
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Contact email recieved from snfernandes.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Application definition
 
@@ -80,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'portfoliodb',
         'USER': 'postgres',
-        'PASSWORD':'simonsunita1',
+        'PASSWORD': configPASSWORD,
         'HOST':'localhost',
         'PORT':'5432',
     }
