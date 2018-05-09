@@ -18,7 +18,7 @@
 <body>
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center fixed-top">
       <a class="navbar-brand" href="{% url 'home' %}">Sweeton Fernandes</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,8 +28,8 @@
           <a class="nav-item nav-link" href="https://www.linkedin.com/in/sweeton-nikil-fernandes-5341a315b/">LinkedIn</a>
           <a class="nav-item nav-link" href="https://github.com/SNFernandes24">GitHub</a>
           <a class="nav-item nav-link" href="https://twitter.com/NikilFernandes1">Twitter</a>
-          <a class="nav-item nav-link" href="{% static 'CV.pdf' %}">CV</a>
-          <a class="nav-item nav-link" href="{%url 'allblogs'%}">Blog</a>
+          <a class="nav-item nav-link" href="http://tny.im/dia">CV</a> <!--{% static 'CV.pdf' %} -->
+          <!-- <a class="nav-item nav-link" href="{%url 'allblogs'%}">Blog</a> -->
         </div>
       </div>
     </nav>
@@ -40,49 +40,22 @@
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Hi, I'm Sweeton...</h1>
-        <p class="lead text-muted">I work with Unreal, C++, C# and have experience developing in Python/Django, Javascript, HTML5, CSS, Bootstrap.
-          I have developed games in both Unreal and Unity for PC and mobile with Unreal. Currently looking to start in Software Development and focus more on that.</p>
-        <img src = "{% static 'sweeton.jpg' %}"/img>
-        <h2>Contact Me</h2>
-        <p> Please send your message below. I will get back to you at the earliest! </p>
-        <form role="form" method="POST" id="reused_form" action="{% url 'send' %}">
-          {% csrf_token %}
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label for="message"> Message:</label>
-                    <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 form-group">
-                    <label for="name"> Your Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="col-sm-6 form-group">
-                    <label for="email"> Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <button type="submit" class="btn btn-lg btn-default pull-right" value="submit">Send &rarr;</button>
-                </div>
-            </div>
-        </form>
+        <img src = "{% static 'sweeton.jpg' %}" height="200" width="180"/img>
+        <p class="lead text-muted">{{description.summary}} </p>
       </div>
     </section>
 
     <div class="album py-5 bg-light">
       <div class="container">
-
         <div class="row">
-
           {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card mb-4 box-shadow" style="width: 18rem; height: 40rem">
               <img class="card-img-top" src = "{{ job.image.url}}">
               <hr />
               <div class="card-body">
+                <p class="card-title"><strong>{{job.title}}</strong></p>
+                <p class="card-title"><strong>{{job.languages}}</strong></p>
                 <p class="card-text">{{job.summary}}</p>
               </div>
             </div>
@@ -91,7 +64,34 @@
         </div>
       </div>
     </div>
-
+    <div style="margin: 5% 10%">
+      <h2>Contact Me</h2>
+      <p> Please send your message below. I will get back to you at the earliest! </p>
+      <form role="form" method="POST" id="reused_form" action="{% url 'send' %}">
+        {% csrf_token %}
+          <div class="row">
+              <div class="col-sm-12 form-group">
+                  <label for="message"> Message:</label>
+                  <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-6 form-group">
+                  <label for="name"> Your Name:</label>
+                  <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="col-sm-6 form-group">
+                  <label for="email"> Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12 form-group">
+                  <button type="submit" class="btn btn-lg btn-default pull-right" value="submit">Send &rarr;</button>
+              </div>
+          </div>
+        </form>
+      </div>
   </main>
 
   <footer class="text-muted">

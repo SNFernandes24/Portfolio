@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Job
+from .models import Description
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import get_template
@@ -7,7 +8,8 @@ from django.template.loader import get_template
 # Create your views here.
 def home(request):
     jobs = Job.objects
-    return render(request, 'jobs/home.html', {'jobs': jobs})
+    description = Description.objects.get()
+    return render(request, 'jobs/home.html', {'jobs': jobs, 'description': description})
 
 def contact_view(request):
     if request.method == "POST":
