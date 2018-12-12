@@ -20,7 +20,7 @@ def contact_view(request):
 
         subject = 'Contact Form Recieved'
         from_email = settings.DEFAULT_FROM_EMAIL
-        to_email = ['snfernandes24@gmail.com']
+        to_email = ['omegaLUL@gmail.com']
 
         context = {
             'user': name,
